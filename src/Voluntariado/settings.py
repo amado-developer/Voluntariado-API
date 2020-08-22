@@ -38,8 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'solicitud_proyecto.apps.SolicitudProyectoConfig',
     'corsheaders',
+    'solicitud_proyecto.apps.SolicitudProyectoConfig',
+    'project_images.apps.ProjectImagesConfig',
+    'faculties.apps.FacultiesConfig',
+    'majors.apps.MajorsConfig',
 ]
 
 MIDDLEWARE = [
@@ -85,8 +88,13 @@ WSGI_APPLICATION = 'Voluntariado.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'Voluntariado',
+        'USER': 'postgres',
+        'PASSWORD': '1234',
+        'HOST' : 'localhost',
+        'PORT' : '5432',
+
     }
 }
 

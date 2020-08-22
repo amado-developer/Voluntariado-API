@@ -16,16 +16,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from rest_framework import routers
-from solicitud_proyecto.views import SolicitudViewSet
+
 from django.conf.urls import url, include
 
 from rest_framework.urlpatterns import format_suffix_patterns
 from django.conf import settings
 from django.conf.urls.static import static
 
-router = routers.DefaultRouter()
+from solicitud_proyecto.views import SolicitudViewSet
+from project_images.views import ProjectImagesViewSet
 
+
+router = routers.DefaultRouter()
 router.register(r'^solicitud-proyecto', SolicitudViewSet)
+router.register(r'^project-images', ProjectImagesViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

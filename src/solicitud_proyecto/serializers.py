@@ -11,7 +11,6 @@ class Solicitud_Proyecto_Serializer(serializers.ModelSerializer):
             'description',
             'requirements',
             'is_approved',
-            'picture',
             'email_address',
             'phone_number'
         )
