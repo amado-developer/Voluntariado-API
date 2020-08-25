@@ -33,6 +33,7 @@ class User(AbstractBaseUser):
 
     USERNAME_FIELD = 'email'
     objects = CustomUserManager()
+    
 class Meta:
     verbose_name = 'User'
     verbose_name_plural = 'Users'

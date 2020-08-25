@@ -30,6 +30,12 @@ from majors.views import MajorViewSet
 from project_request_links.views import ProjectRequestLinksViewSet
 from users.views import UserViewset
 
+from rest_framework_jwt.views import (
+    obtain_jwt_token, 
+    refresh_jwt_token
+)
+
+
 router = routers.DefaultRouter()
 router.register(r'^solicitud-proyecto', SolicitudViewSet)
 router.register(r'^project-images', ProjectImagesViewSet)
@@ -40,5 +46,7 @@ router.register(r'^users', UserViewset)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url(r'^api/v1/token-auth/', obtain_jwt_token),
+    url(r'^api/v1/token-refresh/', refresh_jwt_token),
     url(r'^api/v1/', include(router.urls)),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

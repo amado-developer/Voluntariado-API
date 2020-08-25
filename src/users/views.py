@@ -6,6 +6,15 @@ from .models import User
 
 from rest_framework.decorators import action
 
+
+def jwt_response_payload_handler(token, user=None, request=None):
+    user = UserSerializer(user, context={'request': request}).data
+    return {
+        'token': token,
+        'user': UserSerializer(user, context={'request': request}).data
+    }
+
 class UserViewset(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
