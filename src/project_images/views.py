@@ -17,7 +17,7 @@ class ProjectImagesViewSet(viewsets.ModelViewSet):
         images_querydict = request.data
         images_dict = dict(images_querydict)
         images_list = images_dict['image']
-       
+        
         for image in images_list:
             images = ProjectImages()
             images.ifk = project_object

@@ -25,11 +25,18 @@ from django.conf.urls.static import static
 
 from solicitud_proyecto.views import SolicitudViewSet
 from project_images.views import ProjectImagesViewSet
-
+from faculties.views import FacultyViewSet
+from majors.views import MajorViewSet
+from project_request_links.views import ProjectRequestLinksViewSet
+from users.views import UserViewset
 
 router = routers.DefaultRouter()
 router.register(r'^solicitud-proyecto', SolicitudViewSet)
 router.register(r'^project-images', ProjectImagesViewSet)
+router.register(r'^faculties', FacultyViewSet)
+router.register(r'^majors', MajorViewSet)
+router.register(r'^project-links', ProjectRequestLinksViewSet)
+router.register(r'^users', UserViewset)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

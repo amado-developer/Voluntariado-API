@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'project_images.apps.ProjectImagesConfig',
     'faculties.apps.FacultiesConfig',
     'majors.apps.MajorsConfig',
+    'project_request_links.apps.ProjectRequestLinksConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -89,7 +91,7 @@ WSGI_APPLICATION = 'Voluntariado.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Voluntariado',
+        'NAME': 'Volunteering',
         'USER': 'postgres',
         'PASSWORD': '1234',
         'HOST' : 'localhost',

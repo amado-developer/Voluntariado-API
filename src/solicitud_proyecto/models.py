@@ -11,6 +11,10 @@ class Solicitud_Proyecto(models.Model):
     is_approved = models.BooleanField(default=False)
     phone_number = models.CharField(max_length=20, null=False, default='')
     email_address= models.EmailField(max_length=200,null=False, default='')
+    company_address = models.CharField(max_length=1000, null=True)
+    about_us = models.CharField(max_length=2000, null=True)
+    major = models.ForeignKey(to='majors.Major', on_delete=models.CASCADE, default=0)
+    tags = models.CharField(max_length=5000, null=True)
 
 class Meta:
     verbose_name = 'Solicitud de Proyecto'

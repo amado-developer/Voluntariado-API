@@ -12,6 +12,10 @@ class Solicitud_Proyecto_Serializer(serializers.ModelSerializer):
             'requirements',
             'is_approved',
             'email_address',
-            'phone_number'
+            'phone_number',
+            'company_address',
+            'about_us',
+            'major',
+            'tags',
         )
     
