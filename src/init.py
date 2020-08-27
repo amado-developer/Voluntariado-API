@@ -201,7 +201,6 @@ InterMark.save()
 -----------------------------------------------------------------------------------------------------------------------------------------------
 '''
 
-
 dummy_admin = User()
 dummy_admin.email = 'dummyadmin@uvg.edu.gt'
 dummy_admin.set_password('dummy123')
@@ -210,8 +209,24 @@ dummy_admin.last_name = 'User'
 dummy_admin.age = 30
 dummy_admin.phone_number = 'Admin'
 dummy_admin.major = biomedical
-dummy_admin.is_admin = True
+dummy_admin.is_staff = True
 dummy_admin.save()
+
+dummy_user = User()
+dummy_user.email = 'dummyuser@uvg.edu.gt'
+dummy_user.set_password('dummyuser123')
+dummy_user.first_name = 'Dummy'
+dummy_user.last_name = 'User'
+dummy_user.age = 30
+dummy_user.phone_number = '1234'
+dummy_user.major = biomedical
+dummy_user.is_staff = False
+dummy_user.save()
+
+
+'''
+
+'''
 
 
 

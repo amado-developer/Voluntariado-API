@@ -1,6 +1,8 @@
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
+from rest_framework.decorators import permission_classes
 
 from .models import ProjectRequestLinks
 from solicitud_proyecto.models import Solicitud_Proyecto
@@ -9,6 +11,15 @@ from .serializers import ProjectRequestLinksSerializer
 class ProjectRequestLinksViewSet(viewsets.ModelViewSet):
     queryset = ProjectRequestLinks.objects.all()
     serializer_class = ProjectRequestLinksSerializer
+
+    def get_permissions(self):
+        if self.action == 'list':
+            permission_classes = [IsAuthenticated]
+        elif self.action == 'save_links':
+            permission_classes = [AllowAny]
+        else:
+            permission_classes = [IsAdminUser]
+        return [permission() for permission in permission_classes]
 
 
     @action(methods=['POST'], detail=False, url_path='save-links')

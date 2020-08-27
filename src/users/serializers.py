@@ -17,7 +17,7 @@ class UserSerializer(serializers.ModelSerializer):
             'password2',
             'age',
             'phone_number',
-            'is_admin',
+            'is_staff',
         )
   
         extra_kwargs = {

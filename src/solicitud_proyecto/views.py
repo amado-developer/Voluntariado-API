@@ -2,16 +2,20 @@ from solicitud_proyecto.models import Solicitud_Proyecto
 from solicitud_proyecto.serializers import Solicitud_Proyecto_Serializer
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from rest_framework.decorators import permission_classes
+from rest_framework import permissions
 
 from rest_framework import viewsets
 from majors.models import Major
 from faculties.models import Faculty
+from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 
 class SolicitudViewSet(viewsets.ModelViewSet):
     serializer_class= Solicitud_Proyecto_Serializer
     queryset = Solicitud_Proyecto.objects.all()
+    permission_classes = [IsAdminUser]
 
-    @action(methods=['post'], detail=False, url_path='post-request')
+    @action(detail=False, methods=['post'], permission_classes=[AllowAny], url_path='post-request', )
     def post_request(self, request):
         project_request_querydict = request.data
         project_request_dict = dict(project_request_querydict)

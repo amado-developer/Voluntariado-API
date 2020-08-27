@@ -6,6 +6,7 @@ class Solicitud_Proyecto_Serializer(serializers.ModelSerializer):
         model= Solicitud_Proyecto
         fields = (
             'id',
+            'date',
             'company_name',
             'project_name',
             'description',
