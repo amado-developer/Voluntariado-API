@@ -13,9 +13,9 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 class SolicitudViewSet(viewsets.ModelViewSet):
     serializer_class= Solicitud_Proyecto_Serializer
     queryset = Solicitud_Proyecto.objects.all()
-    permission_classes = [IsAdminUser]
+    permission_classes = [AllowAny]
 
-    @action(detail=False, methods=['post'], permission_classes=[AllowAny], url_path='post-request', )
+    @action(detail=False, methods=['post'], permission_classes=[AllowAny], url_path='post-request')
     def post_request(self, request):
         project_request_querydict = request.data
         project_request_dict = dict(project_request_querydict)
@@ -35,4 +35,10 @@ class SolicitudViewSet(viewsets.ModelViewSet):
         project_request.tags = project_request_dict['tags']
         project_request.save()
         return Response({})
+
+    @action(detail=False, methods=['get'], url_path='pending-requests', permission_classes=[AllowAny])
+    def pending_requests(self, request):
+        requests = Solicitud_Proyecto.objects.filter(is_approved=False)
+        return Response(Solicitud_Proyecto_Serializer(requests, many=True).data)
+
 
