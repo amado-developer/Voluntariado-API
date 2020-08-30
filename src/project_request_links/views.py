@@ -17,6 +17,8 @@ class ProjectRequestLinksViewSet(viewsets.ModelViewSet):
             permission_classes = [IsAuthenticated]
         elif self.action == 'save_links':
             permission_classes = [AllowAny]
+        elif self.action == 'get_links':
+            permission_classes = [IsAdminUser]
         else:
             permission_classes = [IsAdminUser]
         return [permission() for permission in permission_classes]
@@ -36,3 +38,11 @@ class ProjectRequestLinksViewSet(viewsets.ModelViewSet):
             links.save()
 
         return Response({})
+
+    @action(methods=['GET'], detail=False, url_path='get-links')
+    def get_links(self, request):
+        project_id = request.query_params['project']
+        project = Solicitud_Proyecto.objects.get(pk=project_id)
+        links = ProjectRequestLinks.objects.filter(project_request=project)
+        links_response = ProjectRequestLinksSerializer(links, many=True).data
+        return Response(links_response)
