@@ -8,7 +8,9 @@ from rest_framework import permissions
 from rest_framework import viewsets
 from majors.models import Major
 from faculties.models import Faculty
+from users.models import User
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
+from django.core.mail import send_mail
 
 class SolicitudViewSet(viewsets.ModelViewSet):
     serializer_class= Solicitud_Proyecto_Serializer
@@ -41,4 +43,22 @@ class SolicitudViewSet(viewsets.ModelViewSet):
         requests = Solicitud_Proyecto.objects.filter(is_approved=False)
         return Response(Solicitud_Proyecto_Serializer(requests, many=True).data)
 
+    @action(detail=False, methods=['post'], permission_classes=[AllowAny], url_path='send-request-email')
+    def send_request_email(self, request):
+        major = request.data['major']   
+        project_request = Solicitud_Proyecto.objects.first() #modificar we
+        request_major = project_request.major
+        principal = User.objects.get(major=request_major, is_staff=True)
+        principal_firstname = principal.first_name
+        principal_lastname = principal.last_name
+        principal_email = principal.email
+        company = request.data['company']
+        project_name = request.data['projectName']
+    
+        subject = 'Solicitud de Nuevo Proyecto - Horas de Extensión'
+        message = '''Estimado {} {}, la organización {} ha enviado una solicitud para el proyecto de horas de extensión "{}".'''.format(principal_firstname, principal_lastname, company, project_name)
+        sender = 'horasdeextensionuvg@gmail.com'
+        fail_silently=False
 
+        result = send_mail(subject, message, sender, [principal_email], fail_silently)
+        return Response(result)

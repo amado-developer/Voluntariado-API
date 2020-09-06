@@ -26,7 +26,7 @@ SECRET_KEY = 'izs1alt_z2tgoqi*)w6gegls5y$360_t(%w*-4*5w8-iv%l4vr'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.255', '10.120.61.149', '10.0.2.2', 'localhost', '127.0.0.1', '192.168.1.6', '192.168.1.5']
+ALLOWED_HOSTS = ['192.168.1.255', '10.120.61.149', '10.0.2.2', 'localhost', '127.0.0.1', '192.168.1.6', '192.168.1.5', 'Allauth']
 
 CORS_ORIGIN_ALLOW_ALL =  True
 
@@ -154,6 +154,31 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_PASSWORD='dummy123!'
+EMAIL_HOST_USER='horasdeextensionuvg@gmail.com'
+EMAIL_FILE_PATH = '/tmp/app-messages'
+EMAIL_PORT = 587
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST_USER='horasdeextensionuvg@gmail.com'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_PASSWORD = "dummy123!"
+
+'''send_mail(
+    'Subject here',
+    'Here is the message.',
+    'horasdeextensionuvg@gmail.com',
+    ['horasdeextensionuvg@gmail.com'],
+    fail_silently=False,
+)'''
 
 
 # Static files (CSS, JavaScript, Images)

@@ -206,13 +206,13 @@ InterMark.save()
 '''
 
 dummy_admin = User()
-dummy_admin.email = 'dummyadmin@uvg.edu.gt'
-dummy_admin.set_password('dummy123')
-dummy_admin.first_name = 'Dummy'
-dummy_admin.last_name = 'User'
+dummy_admin.email = 'val18762@uvg.edu.gt'
+dummy_admin.set_password('doug123')
+dummy_admin.first_name = 'Douglas'
+dummy_admin.last_name = 'Barrios'
 dummy_admin.age = 30
-dummy_admin.phone_number = 'Admin'
-dummy_admin.major = biomedical
+dummy_admin.phone_number = '123456'
+dummy_admin.major = computer_science
 dummy_admin.is_staff = True
 dummy_admin.save()
 
@@ -246,7 +246,7 @@ req1.phone_number = '1770'
 req1.email_address = 'Mcdonalds@mc.com'
 req1.company_address = 'Ciudad de Guatemala'
 req1.about_us = 'Ya deberias saberlo we'
-req1.major = food
+req1.major = computer_science
 req1.tags = 'Colesterol  Diabetes  Cocacola  Rinones  Obesidad  UVG  Cardiaco  F'
 req1.save()
 
