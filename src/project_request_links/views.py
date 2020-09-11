@@ -5,7 +5,7 @@ from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
 from rest_framework.decorators import permission_classes
 
 from .models import ProjectRequestLinks
-from solicitud_proyecto.models import Solicitud_Proyecto
+from project_request.models import ProjectRequest
 from .serializers import ProjectRequestLinksSerializer
 
 class ProjectRequestLinksViewSet(viewsets.ModelViewSet):
@@ -26,7 +26,7 @@ class ProjectRequestLinksViewSet(viewsets.ModelViewSet):
 
     @action(methods=['POST'], detail=False, url_path='save-links')
     def save_links(self, request):
-        project_object = Solicitud_Proyecto.objects.last()
+        project_object = ProjectRequest.objects.last()
         links_querydict = request.data
         links_dict = dict(links_querydict)
         links_list = links_dict['link']
@@ -42,7 +42,7 @@ class ProjectRequestLinksViewSet(viewsets.ModelViewSet):
     @action(methods=['GET'], detail=False, url_path='get-links')
     def get_links(self, request):
         project_id = request.query_params['project']
-        project = Solicitud_Proyecto.objects.get(pk=project_id)
+        project = ProjectRequest.objects.get(pk=project_id)
         links = ProjectRequestLinks.objects.filter(project_request=project)
         links_response = ProjectRequestLinksSerializer(links, many=True).data
         return Response(links_response)

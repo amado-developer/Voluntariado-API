@@ -14,11 +14,11 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='ProjectRequestLinks',
+            name='ProjectRequestImages',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('link', models.URLField()),
-                ('project_request', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='project_request.projectrequest')),
+                ('image', models.ImageField(default='', upload_to='')),
+                ('ifk', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='project_request.projectrequest')),
             ],
         ),
     ]

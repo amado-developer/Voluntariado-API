@@ -1,8 +1,8 @@
 from faculties.models import Faculty
 from majors.models import Major
 from users.models import User
-from solicitud_proyecto.models import Solicitud_Proyecto
-from project_images.models import ProjectImages
+from project_request.models import ProjectRequest
+from project_request_images.models import ProjectRequestImages
 from project_request_links.models import ProjectRequestLinks
 from django.core.files import File
 
@@ -206,7 +206,7 @@ InterMark.save()
 '''
 
 dummy_admin = User()
-dummy_admin.email = 'val18762@uvg.edu.gt'
+dummy_admin.email = 'gar181469@uvg.edu.gt'
 dummy_admin.set_password('doug123')
 dummy_admin.first_name = 'Douglas'
 dummy_admin.last_name = 'Barrios'
@@ -234,7 +234,7 @@ dummy_user.save()
 =============================================================================================
 '''
 
-req1 = Solicitud_Proyecto()
+req1 = ProjectRequest()
 req1.company_name = 'Mcdonald''s'
 req1.project_name = 'Mc en la UVG'
 req1.description = '''Debido al nuevo edificio (CIT), 
@@ -243,7 +243,7 @@ generar una relacion para que los estudiantes tengan la opcion de
 degustar nuestros producos al alcance de la mano'''
 req1.requirements = 'Ser estudiante de 4to ano de Ingenieria en alimentos o carrera afin'
 req1.phone_number = '1770'
-req1.email_address = 'Mcdonalds@mc.com'
+req1.email_address = 'val18762@uvg.edu.gt'
 req1.company_address = 'Ciudad de Guatemala'
 req1.about_us = 'Ya deberias saberlo we'
 req1.major = computer_science
@@ -255,22 +255,22 @@ link.link = 'https://mcdonalds.com.gt/'
 link.project_request = req1
 link.save()
 
-img1 = ProjectImages()
+img1 = ProjectRequestImages()
 img1.ifk = req1
 img1.image.save('mc1.jpeg', File(open('./assets/mc1.jpeg', 'rb')))
 img1.save()
 
-img2 = ProjectImages()
+img2 = ProjectRequestImages()
 img2.ifk = req1
 img2.image.save('mc2.jpg', File(open('./assets/mc2.jpg', 'rb')))
 img2.save()
 
-img3 = ProjectImages()
+img3 = ProjectRequestImages()
 img3.ifk = req1
 img3.image.save('mc1.jpeg', File(open('./assets/mc3.jpg', 'rb')))
 img3.save()
 
-img4 = ProjectImages()
+img4 = ProjectRequestImages()
 img4.ifk = req1
 img4.image.save('mc4.jpeg', File(open('./assets/mc4.jpeg', 'rb')))
 img4.save()
@@ -279,17 +279,17 @@ img4.save()
 =====================================================================================================================
 '''
 
-req2 = Solicitud_Proyecto()
+req2 = ProjectRequest()
 req2.company_name = 'Excel Automotriz'
 req2.project_name = 'Carros electricos en Guatemala'
 req2.description = '''Dado que la gasolina es uno de los factores que mas afecta a los guatemaltecos, 
 nos gustaria introducir el uso de automoviles electricos en Guatemala.'''
 req2.requirements = 'Ser estudiante de 5to ano de Ingenieria en Mecanica o carrera afin'
 req2.phone_number = '22778200'
-req2.email_address = 'excel@ex.com'
+req2.email_address = 'val18762@uvg.edu.gt'
 req2.company_address = 'Km 14.5 Calzada Roosevelt 5-86, Zona 3 de Mixco'
 req2.about_us = 'Somos la empresa líder de la industria automotriz de la región'
-req2.major = mechanics
+req2.major = computer_science
 req2.tags = 'Carros  Mecanico  Mecanica  Manos sucias  GG'
 req2.save()
 
@@ -298,17 +298,17 @@ link.link = 'https://excelautomotriz.com/guatemala/'
 link.project_request = req2
 link.save()
 
-img1 = ProjectImages()
+img1 = ProjectRequestImages()
 img1.ifk = req2
 img1.image.save('ex1.jpeg', File(open('./assets/ex1.jpg', 'rb')))
 img1.save()
 
-img2 = ProjectImages()
+img2 = ProjectRequestImages()
 img2.ifk = req2
 img2.image.save('ex2.jpg', File(open('./assets/ex2.jpeg', 'rb')))
 img2.save()
 
-img3 = ProjectImages()
+img3 = ProjectRequestImages()
 img3.ifk = req2
 img3.image.save('ex3.jpeg', File(open('./assets/ex3.jpeg', 'rb')))
 img3.save()

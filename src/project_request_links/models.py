@@ -4,7 +4,7 @@ from django.db import models
 class ProjectRequestLinks(models.Model):
     link = models.URLField(null=False)
     project_request = models.ForeignKey(
-        to='solicitud_proyecto.Solicitud_Proyecto', 
+        to='project_request.ProjectRequest', 
         null=False, 
         on_delete=models.CASCADE)
 

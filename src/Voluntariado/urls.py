@@ -23,8 +23,8 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from django.conf import settings
 from django.conf.urls.static import static
 
-from solicitud_proyecto.views import SolicitudViewSet
-from project_images.views import ProjectImagesViewSet
+from project_request.views import ProjectRequestViewSet
+from project_request_images.views import ProjectRequestImagesViewSet
 from faculties.views import FacultyViewSet
 from majors.views import MajorViewSet
 from project_request_links.views import ProjectRequestLinksViewSet
@@ -37,8 +37,8 @@ from rest_framework_jwt.views import (
 
 
 router = routers.DefaultRouter()
-router.register(r'^solicitud-proyecto', SolicitudViewSet)
-router.register(r'^project-images', ProjectImagesViewSet)
+router.register(r'^project-request', ProjectRequestViewSet)
+router.register(r'^project-images', ProjectRequestImagesViewSet)
 router.register(r'^faculties', FacultyViewSet)
 router.register(r'^majors', MajorViewSet)
 router.register(r'^project-links', ProjectRequestLinksViewSet)
