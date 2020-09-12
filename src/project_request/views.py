@@ -43,7 +43,7 @@ class ProjectRequestViewSet(viewsets.ModelViewSet):
         return Response(ProjectRequestSerializer(requests, many=True).data)
 
     @action(detail=False, methods=['get'], url_path='available-projects', permission_classes=[AllowAny])
-    def available_projects(self):
+    def available_projects(self, request):
         requests = ProjectRequest.objects.filter(is_approved=True)
         return Response(ProjectRequestSerializer(requests, many=True).data)
 

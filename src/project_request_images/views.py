@@ -25,7 +25,7 @@ class ProjectRequestImagesViewSet(viewsets.ModelViewSet):
 
     @action(methods=['POST'], detail=False, url_path='save-images')
     def save_images(self, request):
-        project_object = Solicitud_Proyecto.objects.last()
+        project_object = ProjectRequest.objects.last()
         images_querydict = request.data
         images_dict = dict(images_querydict)
         images_list = images_dict['image']
@@ -42,7 +42,7 @@ class ProjectRequestImagesViewSet(viewsets.ModelViewSet):
     @action(methods=['GET'], detail=False, url_path='get-images')
     def get_images(self, request):
         project_id = request.query_params['project']
-        project = Solicitud_Proyecto.objects.get(pk=project_id)
+        project = ProjectRequest.objects.get(pk=project_id)
         images = ProjectRequestImages.objects.filter(ifk=project)
         images_response = ProjectRequestImagesSerializer(images, many=True).data
         return Response(images_response)
