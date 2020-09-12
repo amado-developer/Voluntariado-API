@@ -5,10 +5,12 @@ import uuid
 from rest_framework import permissions
 class UserSerializer(serializers.ModelSerializer):
     password2 = serializers.CharField(style={'inpute_type' : 'password'}, write_only=True)
+    major = serializers.SerializerMethodField()
     class Meta:
         model = User
         fields = (
             'id',
+            'college_id',
             'email',
             'first_name',
             'last_name',
@@ -16,13 +18,15 @@ class UserSerializer(serializers.ModelSerializer):
             'password',
             'password2',
             'age',
+            'major',
             'phone_number',
+            'cv',
             'is_staff',
         )
-  
         extra_kwargs = {
             'password' :{'write_only' : True },
         }
+
 
     def save(self):      
         user = User(
@@ -43,3 +47,5 @@ class UserSerializer(serializers.ModelSerializer):
         user.save() 
 
         return user
+    def get_major(self, obj):
+        return obj.major.major

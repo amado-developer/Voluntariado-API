@@ -9,9 +9,10 @@ from rest_framework.decorators import action
 
 def jwt_response_payload_handler(token, user=None, request=None):
     user = UserSerializer(user, context={'request': request}).data
+    
     return {
         'token': token,
-        'user': UserSerializer(user, context={'request': request}).data
+        'user': user,
     }
 
 class UserViewset(viewsets.ModelViewSet):

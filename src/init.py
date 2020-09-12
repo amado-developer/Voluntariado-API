@@ -217,15 +217,18 @@ dummy_admin.is_staff = True
 dummy_admin.save()
 
 dummy_user = User()
-dummy_user.email = 'dummyuser@uvg.edu.gt'
+dummy_user.college_id = '18762'
+dummy_user.email = 'val18762@uvg.edu.gt'
 dummy_user.set_password('dummyuser123')
-dummy_user.first_name = 'Dummy'
-dummy_user.last_name = 'User'
-dummy_user.age = 30
-dummy_user.phone_number = '1234'
-dummy_user.major = biomedical
+dummy_user.first_name = 'Ricardo Antonio'
+dummy_user.last_name = 'Valenzuela Avila'
+dummy_user.age = 20
+dummy_user.phone_number = '56952549'
+dummy_user.major = computer_science
 dummy_user.is_staff = False
-dummy_user.save()
+dummy_user.cv.save('cv.pdf', File(open('./assets/cv/cv.pdf', 'rb')))
+dummy_user.profile_picture.save('Tono.jpg', File(open('./assets/Tono.jpg', 'rb')))
+dummy_user.save()   
 
 '''
 '''
