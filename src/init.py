@@ -226,7 +226,7 @@ dummy_user.age = 20
 dummy_user.phone_number = '56952549'
 dummy_user.major = computer_science
 dummy_user.is_staff = False
-dummy_user.cv.save('cv.pdf', File(open('./assets/cv/cv.pdf', 'rb')))
+dummy_user.cv.save('Ricardo Antonio_Valenzuela Avila_CV.pdf', File(open('./assets/cv/cv.pdf', 'rb')))
 dummy_user.profile_picture.save('Tono.jpg', File(open('./assets/Tono.jpg', 'rb')))
 dummy_user.save()   
 
