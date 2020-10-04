@@ -29,12 +29,12 @@ from faculties.views import FacultyViewSet
 from majors.views import MajorViewSet
 from project_request_links.views import ProjectRequestLinksViewSet
 from users.views import UserViewset
+from user_keywords.views import UserKeywordsViewset
 
 from rest_framework_jwt.views import (
     obtain_jwt_token, 
     refresh_jwt_token
 )
-
 
 router = routers.DefaultRouter()
 router.register(r'^project-request', ProjectRequestViewSet)
@@ -43,6 +43,7 @@ router.register(r'^faculties', FacultyViewSet)
 router.register(r'^majors', MajorViewSet)
 router.register(r'^project-links', ProjectRequestLinksViewSet)
 router.register(r'^users', UserViewset)
+router.register(r'^user-keywords', UserKeywordsViewset)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

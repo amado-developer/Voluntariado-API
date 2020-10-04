@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'majors.apps.MajorsConfig',
     'project_request_links.apps.ProjectRequestLinksConfig',
     'users.apps.UsersConfig',
+    'user_keywords.apps.UserKeywordsConfig',
 ]
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (

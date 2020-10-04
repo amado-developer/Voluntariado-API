@@ -4,6 +4,7 @@ from users.models import User
 from project_request.models import ProjectRequest
 from project_request_images.models import ProjectRequestImages
 from project_request_links.models import ProjectRequestLinks
+from user_keywords.models import UserKeywords
 from django.core.files import File
 
 #TO RUN THIS FILE USE python manage.py shell < init.py
@@ -319,3 +320,13 @@ img3.save()
 '''
 =======================================================================================================================
 '''
+
+tono_keywords = UserKeywords()
+tono_keywords.keywords = 'Que sea un buen lugar de trabajo, tiempo accesible y temas que conozca,En mi 2ndo año me toco hacer un proyecto con 2 personas a quienes no conocía, casi nunca nos comunicamos y en las ultimas 2 semanas antes de entregar el trabajo me eche el equipo al hombro, al final ellos solo hicieron la documentación del proyecto.,El semestre pasado trabajamos un proyecto de base de datos, me gusto por que fue con personas con las que confió y se que trabajo bien, al final quedo un producto nitido.,,Organización, paciencia y apoyo moral,Bioinformática, mecánica, matematica.,Respeto,tolerancia","Matemáticas, inteligencia espacial,En mi selectivo del semestre pasado tocaba participar en grupos con gente de varias carreras, fue interesante ver los diferentespuntos de opinión y ver como cada uno apoyaba de una manera diferente al trabajo.,Grupos de Whatsapp para comunicarnos y organizarnos,Discord para ya hablar mas directamente. El departamento de compu manda correos con la información general del proyecto y los contactos de la empresa, ya uno decide si aplicar o no'
+tono_keywords.user = dummy_user
+tono_keywords.save()
+
+'''
+========================================================================================================================
+'''
+
