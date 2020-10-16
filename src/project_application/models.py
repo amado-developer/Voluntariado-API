@@ -1,10 +1,9 @@
 from django.db import models
 
 class ProjectApplication(models.Model):
-    project_id  = models.ForeignKey(to='project_request.ProjectRequest', on_delete=models.CASCADE) 
-    student_id  = models.ForeignKey(to='users.User', on_delete=models.CASCADE)
-    major_id    = models.ForeignKey(to='majors.Major', on_delete=models.CASCADE)
-
+    project_id  = models.IntegerField()
+    student_id  = models.IntegerField()
+    major_id    = models.IntegerField()
 
 class Meta:
     verbose_name = 'Project Application'
