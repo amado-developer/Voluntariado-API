@@ -1,4 +1,5 @@
 from project_request.models import ProjectRequest
+from project_application.models import ProjectApplication
 from project_request.serializers import ProjectRequestSerializer
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -91,8 +92,21 @@ class ProjectRequestViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, methods=['get'], url_path='available-projects', permission_classes=[AllowAny])
     def available_projects(self, request):
+        student_id = request.query_params['student_id']
+        project_applications = ProjectApplication.objects.filter(student_id=student_id)
         requests = ProjectRequest.objects.filter(is_approved=True)
-        return Response(ProjectRequestSerializer(requests, many=True).data)
+
+        filtered_requests = []
+        for request in requests:
+            filtered_requests.append(request)
+
+        for request in requests:
+            for project_application in project_applications:
+                if(request.id == project_application.project_id):
+                    filtered_requests.remove(request)
+
+        print(filtered_requests)
+        return Response(ProjectRequestSerializer(filtered_requests, many=True).data)
   
 
     @action(detail=False, methods=['post'], permission_classes=[AllowAny], url_path='send-request-email')
