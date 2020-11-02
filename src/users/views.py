@@ -4,7 +4,7 @@ from rest_framework.decorators import action
 from users.serializers import UserSerializer
 from rest_framework import permissions
 from .models import User
-
+from rest_framework.permissions import AllowAny
 from rest_framework.decorators import action
 
 def jwt_response_payload_handler(token, user=None, request=None):
@@ -18,6 +18,7 @@ def jwt_response_payload_handler(token, user=None, request=None):
 class UserViewset(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    permission_classes = [AllowAny]
 
     @action(methods=['PATCH'], detail=False, url_path='update-student-cv')
     def update_student_cv(self, request):

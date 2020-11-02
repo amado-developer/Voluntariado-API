@@ -31,7 +31,7 @@ class User(AbstractBaseUser):
     age             = models.IntegerField(null=True)
     phone_number    = models.CharField(max_length=50, null=False)
     is_staff        = models.BooleanField(default=False)
-    major           =  models.ForeignKey(to='majors.Major', on_delete=models.CASCADE, default=0)
+    major           = models.ForeignKey(to='majors.Major', on_delete=models.CASCADE, default=0)
     cv              = models.FileField(max_length=None, null=True)
 
     USERNAME_FIELD = 'email'
